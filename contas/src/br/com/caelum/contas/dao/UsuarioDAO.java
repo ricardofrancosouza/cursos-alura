@@ -5,17 +5,22 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import br.com.caelum.contas.ConnectionFactory;
 import br.com.caelum.contas.modelo.Usuario;
-@Component
+@Repository
 public class UsuarioDAO {
 	private Connection connection;
-
-	public UsuarioDAO() {
+	
+	@Autowired
+	public UsuarioDAO(DataSource ds) {
 		try {
-			connection = new ConnectionFactory().getConnection();
+			connection = ds.getConnection();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
