@@ -5,9 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.springframework.stereotype.Component;
+
 import br.com.caelum.contas.ConnectionFactory;
 import br.com.caelum.contas.modelo.Usuario;
-
+@Component
 public class UsuarioDAO {
 	private Connection connection;
 
