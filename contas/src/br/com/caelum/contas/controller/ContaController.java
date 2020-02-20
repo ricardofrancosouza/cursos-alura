@@ -2,6 +2,7 @@ package br.com.caelum.contas.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,5 +48,11 @@ public class ContaController {
 	public String remove(Conta conta){
 		dao.remove(conta);
 		return "redirect:listaContas";
+	}
+	
+	@RequestMapping("/pagaConta")
+	public void paga(Conta conta, HttpServletResponse response){
+		dao.paga(conta.getId());
+		response.setStatus(200);
 	}
 }
